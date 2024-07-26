@@ -1,0 +1,17 @@
+
+defaults
+  mode http
+  timeout client 15s
+  timeout connect 10s
+  timeout server 15s
+  timeout http-request 10s
+
+frontend razaq-tech-frontend
+    bind *:80 v4v6
+    default_backend razaq-tech-backend
+
+backend razaq-tech-backend
+    balance roundrobin
+    server 227029-web-01 54.87.159.66:80 check
+    server 227029-web-02 54.160.104.114:80 check
+
